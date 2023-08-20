@@ -29,8 +29,8 @@ export default function Todo(props) {
 
   return (
     <div className="task" ref={input} onBlur={() => setContents(input.current)}>
-      <h3 contentEditable={true} />
-      <p contentEditable={true} />
+      <h3 />
+      <p />
     </div>
   );
 }
