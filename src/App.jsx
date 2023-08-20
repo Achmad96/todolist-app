@@ -45,7 +45,7 @@ function App() {
                     transition={{ duration: 0.3 }}
                     layoutId={todo?.id}
                     whileHover={{ scale: 1.05 }}>
-                    <Todo todo={todo} todos={todos} settodos={setTodos} />
+                    <Todo todo={todo} set={setTodos} todos={todos} />
                   </motion.li>
                 );
               })}

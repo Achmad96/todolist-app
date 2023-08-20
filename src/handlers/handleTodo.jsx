@@ -2,7 +2,7 @@ export const handleSubmit = (todos, setTodos, inputRef) => {
   return e => {
     e.preventDefault();
     if (inputRef.current.value.trim() === "") return;
-    setTodos([...todos, { task: inputRef.current.value, done: false }]);
+    setTodos([...todos, { title: "No title", task: inputRef.current.value }]);
     inputRef.current.value = "";
   };
 };
@@ -19,10 +19,10 @@ export const handleRemove = (todos, setTodos) => {
 };
 
 export const handleEdit = (todos, setTodos) => {
-  return (id, newTask) => {
+  return (id, newTitle, newTask) => {
     const i = todos.findIndex(todo => todo.id === id);
     if (i !== -1 && newTask.trim() !== "") {
-      setTodos(todos.map(todo => (todo.id === id ? { ...todo, task: newTask } : todo)));
+      setTodos(todos.map(todo => (todo.id === id ? { ...todo, title: newTitle, task: newTask } : todo)));
     } else if (i !== -1 && newTask.trim() === "") {
       handleRemove(todos, setTodos)(id);
     }

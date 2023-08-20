@@ -8,6 +8,12 @@
   --fontFamily: "Overpass", "Poppins", "Catamaran";
 }
 
+h3,
+p {
+  border: none; /* Menonaktifkan border */
+  outline: none;
+}
+
 *,
 body {
   padding: 0;
