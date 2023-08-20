@@ -97,13 +97,14 @@ button {
 
 .content-container {
   display: flex;
-  width: 50%;
+  justify-content: center;
+  width: 100%;
   height: auto;
 }
 
 .content-wrapper {
   display: flex;
-  width: 100%;
+  width: 80%;
   height: 100%;
   flex-wrap: wrap;
   gap: 10px;
