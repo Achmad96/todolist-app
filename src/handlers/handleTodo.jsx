@@ -31,7 +31,7 @@ export const handleEdit = (todos, setTodos) => {
 
 export const handleEditElement = (todos, setTodos, todosEl) => {
   return todoId => {
-    const selectedTodoElement = todosEl.current.querySelector(`[data-todo-id="${todoId}"]`);
+    const selectedTodoElement = todosEl.current.querySelector(`[data-todo-id="${todoId}"] .task p`);
     if (selectedTodoElement) {
       setTodos(todos.map(todo => (todo.id === todoId ? { ...todo, editable: true } : todo)));
     }

@@ -29,6 +29,7 @@ export default function Todo(props) {
 
   return (
     <div className="task" ref={input} onBlur={() => setContents(input.current)}>
+      {/* eslint-disable-next-line*/}
       <h3 contentEditable={todo.editable} />
       <p contentEditable={todo.editable} />
     </div>
