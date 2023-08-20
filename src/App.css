@@ -167,3 +167,7 @@ button {
 .todo-item {
   opacity: 75%;
 }
+
+li {
+  list-style-type: none;
+}
