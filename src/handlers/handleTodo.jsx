@@ -2,7 +2,7 @@ export const handleSubmit = (todos, setTodos, inputRef) => {
   return e => {
     e.preventDefault();
     if (inputRef.current.value.trim() === "") return;
-    setTodos([...todos, { title: "No title", task: inputRef.current.value }]);
+    setTodos([...todos, { title: "No title", task: inputRef.current.value, editable: false }]);
     inputRef.current.value = "";
   };
 };
@@ -27,4 +27,17 @@ export const handleEdit = (todos, setTodos) => {
       handleRemove(todos, setTodos)(id);
     }
   };
+};
+
+export const handleEditElement = (todos, setTodos, todosEl) => {
+  return todoId => {
+    const selectedTodoElement = todosEl.current.querySelector(`[data-todo-id="${todoId}"]`);
+    if (selectedTodoElement) {
+      setTodos(todos.map(todo => (todo.id === todoId ? { ...todo, editable: true } : todo)));
+    }
+  };
+};
+
+export const handleCopy = value => {
+  navigator.clipboard.writeText(value);
 };
