@@ -60,6 +60,7 @@ function App() {
                 todo.id = index;
                 return (
                   <motion.li
+                    layout
                     key={todo.id}
                     className="todo-container"
                     initial={{ opacity: 0 }}
