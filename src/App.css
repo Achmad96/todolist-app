@@ -55,8 +55,9 @@ body {
   flex-direction: column;
   height: 65vh;
   width: 100%;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  margin-bottom: 50px;
   gap: 10px;
   font-size: 15px;
   color: var(--textColor);
@@ -168,6 +169,12 @@ button {
   opacity: 75%;
 }
 
-li {
+.context-menu ul li {
   list-style-type: none;
+  padding: 5px;
+}
+
+.context-menu ul li:hover {
+  cursor: pointer;
+  background-color: #4d6891;
 }

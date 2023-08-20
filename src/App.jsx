@@ -86,6 +86,7 @@ function App() {
               })}
             {clicked && (
               <MenuContext
+                className="context-menu"
                 style={{ backgroundColor: "var(--btnBgColor)", padding: "10px", borderRadius: "10px", position: "absolute", top: `${points.y}px`, left: `${points.x}px` }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
