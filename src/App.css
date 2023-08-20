@@ -129,9 +129,9 @@ button {
   max-width: 50%;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
   .todo-container {
-    max-width: 100%;
+    max-width: 90%;
   }
 }
 
