@@ -22,9 +22,17 @@ function App() {
           There are <span style={{ color: "yellow" }}>{todos.filter(todo => !todo?.done).length}</span> todo(s) not completed.
         </p>
         <div className="header-wrapper">
-          <input type="text" ref={inputTodos} onKeyDown={e => e.key === "Enter" && handleSubmit(todos, setTodos, inputTodos)(e)} placeholder="Enter text" />
+          <input type="text" ref={inputTodos} onKeyDown={e => e.key === "Enter" && handleSubmit(todos, setTodos, inputTodos)(e)} placeholder="Enter new task" />
           <button type="submit" onClick={handleSubmit(todos, setTodos, inputTodos)}>
             Add
+          </button>
+          <button
+            type="submit"
+            onClick={() => {
+              setTodos([]);
+              localStorage.removeItem("todos");
+            }}>
+            Clear
           </button>
         </div>
       </div>

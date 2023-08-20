@@ -110,7 +110,9 @@ button {
 
 .content-wrapper {
   display: flex;
-  width: 80%;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
   height: 100%;
   flex-wrap: wrap;
   gap: 10px;
@@ -124,7 +126,7 @@ button {
 
   width: fit-content;
   height: fit-content;
-  max-width: 40%;
+  max-width: 30%;
 }
 
 .task {
@@ -135,10 +137,13 @@ button {
 
   width: fit-content;
   height: auto;
-  max-width: 100%;
   resize: none;
   overflow: hidden;
   word-wrap: break-word;
+}
+
+.task h3 {
+  opacity: 85%;
 }
 
 .todo-item {
@@ -150,5 +155,5 @@ button {
 
 .task,
 .todo-item {
-  opacity: 85%;
+  opacity: 75%;
 }
