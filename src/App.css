@@ -126,6 +126,13 @@ button {
 
   width: fit-content;
   height: fit-content;
+  max-width: 50%;
+}
+
+@media only screen and (max-width: 500px) {
+  .todo-container {
+    max-width: 100%;
+  }
 }
 
 .task {
