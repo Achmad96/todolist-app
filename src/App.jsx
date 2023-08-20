@@ -9,11 +9,9 @@ function App() {
   const inputTodos = useRef(null);
   const todosEl = useRef(null);
   const [todos, setTodos] = useState([]);
-  const [selectedId, setSelectedId] = useState(0);
-
+  const [selectedId, setSelectedId] = useState(null);
   const remove = handleRemove(todos, setTodos);
   const editTodoElement = handleEditElement(todos, setTodos, todosEl);
-
   const [clicked, setClicked] = useState(false);
   const [points, setPoints] = useState({
     x: 0,
@@ -23,16 +21,16 @@ function App() {
   useEffect(() => {
     const storedData = localStorage.getItem("todos");
     const parsedData = storedData ? JSON.parse(storedData) : [];
-    setTodos(parsedData);
-  }, []);
-
-  useEffect(() => {
     const handleClick = () => setClicked(false);
+
+    setTodos(parsedData);
     window.addEventListener("click", handleClick);
     return () => {
       window.removeEventListener("click", handleClick);
     };
   }, []);
+
+  useEffect(() => console.log(selectedId), [selectedId]);
 
   return (
     <div className="App">
@@ -68,12 +66,12 @@ function App() {
                     key={todo.id}
                     className="todo-container"
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
                     layoutId={todo?.id}
-                    whileHover={{ scale: 1.05 }}
                     data-todo-id={todo.id}
+                    onClick={() => setSelectedId(todo.id)}
+                    onBlur={() => setSelectedId(null)}
                     onContextMenu={e => {
                       e.preventDefault();
                       setClicked(true);
@@ -82,14 +80,20 @@ function App() {
                         y: e.pageY,
                       });
                       setSelectedId(todo.id);
-                    }}>
+                    }}
+                    animate={{ opacity: 1, scale: selectedId === todo.id ? 1.07 : 1 }}>
                     <Todo todo={todo} set={setTodos} todos={todos} />
                   </motion.li>
                 );
               })}
             {clicked && (
-              <MenuContext style={{ backgroundColor: "var(--btnBgColor)", padding: "10px", borderRadius: "10px", position: "absolute", top: `${points.y}px`, left: `${points.x}px` }}>
-                <motion.ul style={{ opacity: "70%" }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+              <MenuContext
+                style={{ backgroundColor: "var(--btnBgColor)", padding: "10px", borderRadius: "10px", position: "absolute", top: `${points.y}px`, left: `${points.x}px` }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}>
+                <motion.ul style={{ opacity: "70%" }}>
                   <motion.li onClick={() => editTodoElement(selectedId)}>Edit</motion.li>
                   <motion.li
                     onClick={() => {

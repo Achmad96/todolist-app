@@ -1,19 +1,15 @@
 import React, { useRef, useEffect } from "react";
-import { handleEdit, handleRemove } from "../handlers/handleTodo";
+import { handleEdit } from "../handlers/handleTodo";
 
 export default function Todo(props) {
   const { todo, todos, set } = props;
   const input = useRef();
-  const remove = handleRemove(todos, set);
 
   const setContents = content => {
     const title = content.getElementsByTagName("h3")[0].innerText.toString();
     const task = content.getElementsByTagName("p")[0].innerText.toString();
     const edit = handleEdit(todos, set);
-
     todo.editable = false;
-    if (task?.trim() === "") return remove(todo.id);
-
     edit(todo.id, title, task);
   };
 

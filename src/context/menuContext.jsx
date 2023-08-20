@@ -1,4 +1,5 @@
+import { motion } from "framer-motion";
 export default function MenuContext(props) {
   const { children } = props;
-  return <div {...props}>{children}</div>;
+  return <motion.div {...props}>{children}</motion.div>;
 }
