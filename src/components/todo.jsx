@@ -16,7 +16,7 @@ export default function Todo(props) {
     localStorage.setItem("todos", JSON.stringify(todos));
     input.current.innerText = todo.task;
     // eslint-disable-next-line
-  }, [todo.task]);
+  }, [todos]);
 
   return <div className="task" ref={input} onBlur={e => setTask(e.currentTarget.innerText)} contentEditable={true}></div>;
 }

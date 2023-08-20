@@ -9,7 +9,12 @@ export const handleSubmit = (todos, setTodos, inputRef) => {
 
 export const handleRemove = (todos, setTodos) => {
   return id => {
-    setTodos(todos.filter(todo => todo.id !== id));
+    if (todos.length === 1) {
+      setTodos([]);
+      localStorage.removeItem("todos");
+    } else {
+      setTodos(todos.filter(todo => todo.id !== id));
+    }
   };
 };
 
