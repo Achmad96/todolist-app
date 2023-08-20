@@ -30,8 +30,6 @@ function App() {
     };
   }, []);
 
-  useEffect(() => console.log(selectedId), [selectedId]);
-
   return (
     <div className="App">
       <div className="header-container">
@@ -62,7 +60,6 @@ function App() {
                 todo.id = index;
                 return (
                   <motion.li
-                    layout
                     key={todo.id}
                     className="todo-container"
                     initial={{ opacity: 0 }}
