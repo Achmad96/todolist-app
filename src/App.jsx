@@ -3,6 +3,7 @@ import Todo from "./components/todo";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { handleSubmit, handleRemove, handleEditElement, handleCopy } from "./handlers/handleTodo";
+import { FaClipboard, FaPen, FaTrash } from "react-icons/fa";
 import MenuContext from "./context/menuContext";
 
 function App() {
@@ -93,14 +94,19 @@ function App() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}>
                 <motion.ul style={{ opacity: "70%" }}>
-                  <motion.li onClick={() => editTodoElement(selectedId)}>Edit</motion.li>
+                  <motion.li onClick={() => editTodoElement(selectedId)}>
+                    <FaPen /> Edit
+                  </motion.li>
                   <motion.li
                     onClick={() => {
                       handleCopy(todos[selectedId].title + "\n" + todos[selectedId].task);
                     }}>
+                    <FaClipboard />
                     Copy
                   </motion.li>
-                  <motion.li onClick={() => remove(selectedId)}>Delete</motion.li>
+                  <motion.li onClick={() => remove(selectedId)}>
+                    <FaTrash /> Delete
+                  </motion.li>
                 </motion.ul>
               </MenuContext>
             )}
