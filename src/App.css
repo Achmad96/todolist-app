@@ -43,6 +43,7 @@ body {
 .App {
   background-color: var(--bgColor);
   width: 100%;
+  min-height: 100vh;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -106,7 +107,6 @@ button {
   display: flex;
   justify-content: center;
   width: 100%;
-  min-height: 42.2vh;
   height: auto;
 }
 
